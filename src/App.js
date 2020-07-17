@@ -15,6 +15,7 @@ function App() {
   function handleChange(event) {
     console.log(event.target.value);
     console.log('updated');
+    console.log('vi updated');
     setValue(event.target.value);
   }
   return (
