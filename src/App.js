@@ -14,6 +14,7 @@ function App() {
   }
   function handleChange(event) {
     console.log(event.target.value);
+    console.log('updated');
     setValue(event.target.value);
   }
   return (
