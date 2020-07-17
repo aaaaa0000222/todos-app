@@ -18,15 +18,18 @@ function App() {
     console.log('vi updated');
     setValue(event.target.value);
   }
+  function foo(values) {
+    console.log(values);
+  }
   return (
     <div className="App">
       <h1 style={{color: 'red'}}>Hello World</h1>
       <Hello text="HelloComponent"></Hello>
       <Hello text="HelloComponent2"></Hello>
-
+ 
       {
         todos.map(todo => (
-          <Todo name={todo.name} status={todo.status} createdDate={todo.createdDate} />
+          <Todo name={todo.name}  status={todo.status} createdDate={todo.createdDate} foo={foo} />
         ))
       }
       <div>
