@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
+import Hello from './Hello';
+import Todo from './Todo';
 import './App.css';
 
 function App() {
+  const [value, setValue] = useState('');
+  const [ todos, setTodos] = useState([]);
+  function submit() {
+    console.log('value', value);
+    //alert('value is ' + value);
+    setTodos([...todos, {name: value, status: 'chua hoan thanh', createdDate: new Date()}]);
+  }
+  function handleChange(event) {
+    console.log(event.target.value);
+    setValue(event.target.value);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{color: 'red'}}>Hello World</h1>
+      <Hello text="HelloComponent"></Hello>
+      <Hello text="HelloComponent2"></Hello>
+
+      {
+        todos.map(todo => (
+          <Todo name={todo.name} status={todo.status} createdDate={todo.createdDate} />
+        ))
+      }
+      <div>
+        <input type="text" name="name" value={value} onChange={handleChange} />
+        <button onClick={submit}>Submit</button>
+      </div>
     </div>
   );
 }
